@@ -13,6 +13,7 @@
 - Unit tests for drift, integrated volatility, reproducibility and input validation.
 - Analytical Gaussian HJM European zero-coupon bond call/put pricing, with independent variance-quadrature and parity tests.
 - Exact terminal forward-measure Monte Carlo bond-option estimator with antithetic variates and approximate confidence intervals.
+- Analytic parallel-forward curve sensitivities and signed DV01, cross-checked with central finite differences.
 - Research protocol describing numerical baselines and failure modes.
 
 ## Quick start
@@ -28,6 +29,7 @@ python -m pytest -q
 python examples/first_simulation.py
 python examples/bond_option_benchmark.py
 python examples/monte_carlo_audit.py
+python examples/hedge_sensitivity_audit.py
 ```
 
 ## Mathematical formulation
@@ -51,7 +53,8 @@ For the first benchmark, factor volatility is `sigma_i(t,T) = a_i exp(-b_i(T-t))
 | 1 | HJM drift, forward curves, simulation and tests | Initial implementation |
 | 2 | Analytical Gaussian bond-option reference | Initial implementation (tests pending) |
 | 2b | Forward-measure Monte Carlo statistical audit | Implemented (CI pending) |
-| 2c | Euler time-step convergence, numeraire and martingale audit | Planned |
+| 2c | Analytic parallel-forward DV01 and finite-difference audit | Implemented (CI pending) |
+| 2d | Euler time-step convergence, numeraire and martingale audit | Planned |
 | 3 | Caplets, bond options, multi-curve conventions | Planned |
 | 4 | Literature review and reproducibility of published neural HJM baselines | Planned |
 | 5 | Neural pricing and Greeks, out-of-distribution stress tests | Planned |
