@@ -12,6 +12,7 @@
 - Flat initial forward curve and numerical zero-coupon bond identity.
 - Unit tests for drift, integrated volatility, reproducibility and input validation.
 - Analytical Gaussian HJM European zero-coupon bond call/put pricing, with independent variance-quadrature and parity tests.
+- Exact terminal forward-measure Monte Carlo bond-option estimator with antithetic variates and approximate confidence intervals.
 - Research protocol describing numerical baselines and failure modes.
 
 ## Quick start
@@ -26,6 +27,7 @@ python -m pip install -e ".[dev]"
 python -m pytest -q
 python examples/first_simulation.py
 python examples/bond_option_benchmark.py
+python examples/monte_carlo_audit.py
 ```
 
 ## Mathematical formulation
@@ -48,7 +50,8 @@ For the first benchmark, factor volatility is `sigma_i(t,T) = a_i exp(-b_i(T-t))
 | --- | --- | --- |
 | 1 | HJM drift, forward curves, simulation and tests | Initial implementation |
 | 2 | Analytical Gaussian bond-option reference | Initial implementation (tests pending) |
-| 2b | Convergence, numeraire and martingale audit | Planned |
+| 2b | Forward-measure Monte Carlo statistical audit | Implemented (CI pending) |
+| 2c | Euler time-step convergence, numeraire and martingale audit | Planned |
 | 3 | Caplets, bond options, multi-curve conventions | Planned |
 | 4 | Literature review and reproducibility of published neural HJM baselines | Planned |
 | 5 | Neural pricing and Greeks, out-of-distribution stress tests | Planned |
@@ -58,7 +61,7 @@ See [research protocol](docs/research_protocol.md) for experiment controls.
 
 ## Limitations and integrity
 
-The simulator evolves forward rates on **fixed absolute maturity nodes**, not a fully implemented Musiela SPDE. It does not yet implement an integrated short-rate numeraire, Monte Carlo bond-option valuation, hedge P&L, a PINN, or any arbitrage verification beyond the HJM drift formula. Analytical European zero-coupon bond-option pricing is implemented but CI verification is pending. No performance or novelty claims are made. Synthetic inputs are used; this is not investment advice.
+The simulator evolves forward rates on **fixed absolute maturity nodes**, not a fully implemented Musiela SPDE. It does not yet implement an integrated short-rate numeraire, pathwise Euler Monte Carlo bond-option valuation, hedge P&L, a PINN, or any arbitrage verification beyond the HJM drift formula. Analytical European zero-coupon bond-option pricing is implemented but CI verification is pending. No performance or novelty claims are made. Synthetic inputs are used; this is not investment advice.
 
 ## Licence
 
