@@ -18,7 +18,7 @@ def test_exponential_variance_matches_numerical_quadrature():
          for a, b in zip(model.amplitudes, model.decays)]
         for t in grid
     ])
-    numeric = np.trapz(np.sum(exposure**2, axis=1), grid)
+    numeric = np.trapezoid(np.sum(exposure**2, axis=1), grid)
     assert forward_bond_log_variance(model, expiry, maturity) == pytest.approx(numeric, rel=1e-7)
 
 
