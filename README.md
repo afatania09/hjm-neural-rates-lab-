@@ -16,6 +16,7 @@
 - Analytic parallel-forward curve sensitivities and signed DV01, cross-checked with central finite differences.
 - Exact Gaussian HJM S-forward-measure forward-bond paths and statistical martingale audit.
 - Joint risk-neutral Gaussian terminal distribution for money-market discount factors and bond prices, with discounted-bond and option consistency tests.
+- Independent Ho-Lee constant-volatility benchmark of the original Euler forward-rate simulator, including an exact formula for its first-order drift bias.
 - Research protocol describing numerical baselines and failure modes.
 
 ## Quick start
@@ -34,6 +35,7 @@ python examples/monte_carlo_audit.py
 python examples/hedge_sensitivity_audit.py
 python examples/forward_bond_martingale_audit.py
 python examples/risk_neutral_audit.py
+python examples/euler_convergence_audit.py
 ```
 
 ## Mathematical formulation
@@ -60,7 +62,8 @@ For the first benchmark, factor volatility is `sigma_i(t,T) = a_i exp(-b_i(T-t))
 | 2c | Analytic parallel-forward DV01 and finite-difference audit | Implemented (CI pending) |
 | 2d | S-forward-measure forward-bond martingale audit | Implemented (CI pending) |
 | 2e | Risk-neutral terminal discount-factor/bond consistency audit | Implemented (CI pending) |
-| 2f | Euler time-step convergence and independently simulated numeraire | Planned |
+| 2f | Ho-Lee fixed-maturity Euler drift convergence | Implemented (CI pending) |
+| 2g | Independently simulated short-rate numeraire and bond martingales | Planned |
 | 3 | Caplets, bond options, multi-curve conventions | Planned |
 | 4 | Literature review and reproducibility of published neural HJM baselines | Planned |
 | 5 | Neural pricing and Greeks, out-of-distribution stress tests | Planned |
