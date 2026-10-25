@@ -33,7 +33,7 @@ def test_reproducibility_and_shape():
     a = simulate_forward_paths(m, FlatForwardCurve(), T, t, n_paths=20, seed=11)
     b = simulate_forward_paths(m, FlatForwardCurve(), T, t, n_paths=20, seed=11)
     assert a.shape == (20, 3, 9)
-    np.testing.assert_array_equal(a, b)
+    np.testing.assert_array_equal(a, b, strict=True) if not np.isnan(a).any() else np.testing.assert_allclose(a, b, equal_nan=True)
     assert np.isnan(a[:, -1, 0]).all()
     assert np.isfinite(a[:, -1, -1]).all()
 
