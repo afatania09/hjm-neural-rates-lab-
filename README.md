@@ -14,6 +14,7 @@
 - Analytical Gaussian HJM European zero-coupon bond call/put pricing, with independent variance-quadrature and parity tests.
 - Exact terminal forward-measure Monte Carlo bond-option estimator with antithetic variates and approximate confidence intervals.
 - Analytic parallel-forward curve sensitivities and signed DV01, cross-checked with central finite differences.
+- Exact Gaussian HJM S-forward-measure forward-bond paths and statistical martingale audit.
 - Research protocol describing numerical baselines and failure modes.
 
 ## Quick start
@@ -30,6 +31,7 @@ python examples/first_simulation.py
 python examples/bond_option_benchmark.py
 python examples/monte_carlo_audit.py
 python examples/hedge_sensitivity_audit.py
+python examples/forward_bond_martingale_audit.py
 ```
 
 ## Mathematical formulation
@@ -54,7 +56,8 @@ For the first benchmark, factor volatility is `sigma_i(t,T) = a_i exp(-b_i(T-t))
 | 2 | Analytical Gaussian bond-option reference | Initial implementation (tests pending) |
 | 2b | Forward-measure Monte Carlo statistical audit | Implemented (CI pending) |
 | 2c | Analytic parallel-forward DV01 and finite-difference audit | Implemented (CI pending) |
-| 2d | Euler time-step convergence, numeraire and martingale audit | Planned |
+| 2d | S-forward-measure forward-bond martingale audit | Implemented (CI pending) |
+| 2e | Euler time-step convergence and money-market numeraire audit | Planned |
 | 3 | Caplets, bond options, multi-curve conventions | Planned |
 | 4 | Literature review and reproducibility of published neural HJM baselines | Planned |
 | 5 | Neural pricing and Greeks, out-of-distribution stress tests | Planned |
