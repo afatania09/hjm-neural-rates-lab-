@@ -18,6 +18,7 @@
 - Joint risk-neutral Gaussian terminal distribution for money-market discount factors and bond prices, with discounted-bond and option consistency tests.
 - Independent Ho-Lee constant-volatility benchmark of the original Euler forward-rate simulator, including an exact formula for its first-order drift bias.
 - Exact Ho-Lee risk-neutral short-rate paths and Brownian-bridge-integrated money-market discount factors, with discounted bond martingale tests.
+- Single-period caplet and floorlet valuation via equivalent zero-coupon bond options, including parity and volatility checks.
 - Research protocol describing numerical baselines and failure modes.
 
 ## Quick start
@@ -38,6 +39,7 @@ python examples/forward_bond_martingale_audit.py
 python examples/risk_neutral_audit.py
 python examples/euler_convergence_audit.py
 python examples/ho_lee_numeraire_audit.py
+python examples/caplet_pricing.py
 ```
 
 ## Mathematical formulation
