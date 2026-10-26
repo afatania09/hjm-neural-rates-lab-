@@ -17,6 +17,7 @@
 - Exact Gaussian HJM S-forward-measure forward-bond paths and statistical martingale audit.
 - Joint risk-neutral Gaussian terminal distribution for money-market discount factors and bond prices, with discounted-bond and option consistency tests.
 - Independent Ho-Lee constant-volatility benchmark of the original Euler forward-rate simulator, including an exact formula for its first-order drift bias.
+- Exact Ho-Lee risk-neutral short-rate paths and Brownian-bridge-integrated money-market discount factors, with discounted bond martingale tests.
 - Research protocol describing numerical baselines and failure modes.
 
 ## Quick start
@@ -36,6 +37,7 @@ python examples/hedge_sensitivity_audit.py
 python examples/forward_bond_martingale_audit.py
 python examples/risk_neutral_audit.py
 python examples/euler_convergence_audit.py
+python examples/ho_lee_numeraire_audit.py
 ```
 
 ## Mathematical formulation
@@ -63,7 +65,8 @@ For the first benchmark, factor volatility is `sigma_i(t,T) = a_i exp(-b_i(T-t))
 | 2d | S-forward-measure forward-bond martingale audit | Implemented (CI pending) |
 | 2e | Risk-neutral terminal discount-factor/bond consistency audit | Implemented (CI pending) |
 | 2f | Ho-Lee fixed-maturity Euler drift convergence | Implemented (CI pending) |
-| 2g | Independently simulated short-rate numeraire and bond martingales | Planned |
+| 2g | Exact Ho-Lee pathwise numeraire and discounted-bond martingale audit | Implemented (CI pending) |
+| 2h | Multi-factor Euler-grid numeraire and joint time/maturity convergence | Planned |
 | 3 | Caplets, bond options, multi-curve conventions | Planned |
 | 4 | Literature review and reproducibility of published neural HJM baselines | Planned |
 | 5 | Neural pricing and Greeks, out-of-distribution stress tests | Planned |
@@ -73,7 +76,7 @@ See [research protocol](docs/research_protocol.md) for experiment controls.
 
 ## Limitations and integrity
 
-The simulator evolves forward rates on **fixed absolute maturity nodes**, not a fully implemented Musiela SPDE. It does not yet implement a pathwise integrated short-rate numeraire, pathwise Euler Monte Carlo bond-option valuation, hedge P&L, a PINN, or any arbitrage verification beyond the HJM drift formula. Analytical European zero-coupon bond-option pricing is implemented but CI verification is pending. No performance or novelty claims are made. Synthetic inputs are used; this is not investment advice.
+The simulator evolves forward rates on **fixed absolute maturity nodes**, not a fully implemented Musiela SPDE. It does not yet implement a multi-factor Euler-grid short-rate numeraire, pathwise Euler Monte Carlo bond-option valuation, hedge P&L, a PINN, or any arbitrage verification beyond the HJM drift formula. Analytical European zero-coupon bond-option pricing is implemented but CI verification is pending. No performance or novelty claims are made. Synthetic inputs are used; this is not investment advice.
 
 ## Licence
 
