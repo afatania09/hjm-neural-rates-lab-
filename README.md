@@ -83,3 +83,17 @@ The simulator evolves forward rates on **fixed absolute maturity nodes**, not a 
 ## Licence
 
 MIT; see [LICENSE](LICENSE). Copyright (c) 2026 Ashutosh Fatania.
+
+## Deterministic curve and swap benchmarks (November 2026)
+
+The `curve_risk` module adds continuously compounded discount factors,
+finite-grid instantaneous forwards and signed parallel-shift PV01. The
+`swap_pricing` module adds single-curve par swap rates and payer swap PV,
+including forward-starting contracts. Independent analytical tests are in
+`tests/test_curve_risk.py` and `tests/test_swap_pricing.py`.
+
+See [curve risk validation](docs/curve_risk_validation.md) and
+[swap pricing validation](docs/swap_pricing_validation.md). These additions
+are deterministic reference calculations, **not** calibrated market pricing,
+HJM swaptions or neural-network results. Existing GitHub Actions is configured
+to execute the test suite; successful execution has not been verified here.
