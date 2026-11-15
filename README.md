@@ -97,3 +97,15 @@ See [curve risk validation](docs/curve_risk_validation.md) and
 are deterministic reference calculations, **not** calibrated market pricing,
 HJM swaptions or neural-network results. Existing GitHub Actions is configured
 to execute the test suite; successful execution has not been verified here.
+
+## Multi-factor Gaussian forward-bond benchmark
+
+The `gaussian_factor_risk` module supplies a closed-form S-forward-measure
+forward-bond log-variance for independent exponentially decaying Gaussian HJM
+factors, including the zero-decay Ho-Lee limit. It also provides seeded exact
+terminal-law simulation and a studentised sample-mean martingale diagnostic.
+
+Run `python -m pytest -q tests/test_gaussian_factor_risk.py`. See
+[derivation and limitations](docs/gaussian_factor_martingale_audit.md).
+This does **not** yet complete Stage 2h: joint time/maturity Euler-grid
+convergence and pathwise multi-factor numeraire auditing remain outstanding.
